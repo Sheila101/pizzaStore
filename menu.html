@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Cloud Pizza Store </title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://kit.fontawesome.com/36a069e387.js" crossorigin="anonymous"></script> 
+	<script src="voice.js"></script>
+</head>
+<body style="background-color: #FFDAB9;">
+
+	<div class="navBar">
+		<a href="home.html"> Home</a>
+		<a href="menu.html"> Menu</a>
+		<a href="reserve.html"> Reservation</a>
+		<!-- <li style="float:right"><a class = "active" href="about.html"> About</a></li> -->
+	</div>
+
+<div class="container">
+	<!-- google is the search engine that is used when user uses the voice command -->
+	<form action="https://www.google.com/search" method="get" id="search-form" target="_blank">
+	<input type="text" name = "q" placeholder="Search for pizza" autocomplete="off" autofocus>
+	<!-- <button style="font-size:24px">Button <i class="fa fa-microphone"></i></button> -->
+	<button type="button"><i class="fas fa-microphone"></i></button> 	<!-- <i class="fas fa-microphone"></i> -->
+	</form> 
+
+</div>
+
+<!-- The menu for the pizzas -->
+
+<div class="pizza">
+		     
+	 <h1 id="quattro"><b>Quattro Stagioni</b> <button onclick="quattro()">$17.50</button></h1>
+      <p>Fresh tomatoes, fresh mozzarella, mashrooms, Artichokes and black olives</p>
+      <hr>
+
+      <h1 id="mare"><b>Frutti di Mare </b> <button onclick="mare()">$20.75</button></h1>
+      <p>Fresh tomatoes, mozzarella, shrimps, mussels and squid</p>
+      <hr>
+         
+      <h1 id="formaggio"><b>Formaggio </b> <button onclick="formaggio()">$11.00</button></h1>
+      <p>Four cheeses (mozzarella, parmesan, pecorino, jarlsberg)</p>
+      <hr>
+      
+      <h1 id="chicken"><b>Chicken </b> <button onclick="chicken()">$15.50</button></h1>
+      <p>Fresh tomatoes, mozzarella, chicken, onions</p>
+      <hr>
+
+      <button onclick="final()">Total!</button>
+      <p id="price" class="finalPrice" style="font-size: 25px"> </p> 
+		
+</div>
+	
+	<script>
+
+		
+	//The JavaScript to calaculate the prices for the pizzas
+
+				let total = 0.0;
+
+		function quattro() {
+			document.getElementById("quattro");
+			let price = 17.50;
+
+			total = total + price;
+			alert("Plus " + price  + "!");
+		}
+
+		function mare() {
+			document.getElementById("mare");
+			let price = 20.75;
+
+			total = total + price;
+			alert("Plus " + price  + "!");
+			
+		}
+
+		function formaggio() {
+			document.getElementById("formaggio");
+			let price = 11;
+
+			total = total + price;
+			alert("Plus " + price  + "!");
+			
+		}
+
+		function chicken() {
+			document.getElementById("chicken");
+
+			let price = 15.50;
+
+			total = total + price;
+			alert("Plus " + price  + "!");
+			
+		}
+
+		function final() 
+		{
+			document.getElementById("price").innerHTML = total;
+
+		}
+
+	</script>
+
+</body>
+</html>

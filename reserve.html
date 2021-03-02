@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+<script>
+	
+  // Your web app's Firebase configuration
+  firebase.initializeApp({
+    apiKey: "AIzaSyAkyfkysbVGEYcS91QOzBylKtKIg8QqEME",
+    authDomain: "dsbase-a8a2a.firebaseapp.com",
+    projectId: "dsbase-a8a2a",
+    storageBucket: "dsbase-a8a2a.appspot.com",
+    messagingSenderId: "717966200689",
+    appId: "1:717966200689:web:37a2ec04613658aed1f0d0"
+  });
+
+  // Initialize Firebase
+  var db = firebase.firestore();
+ 
+  
+sendInfo = () => {
+
+var name = document.getElementById("name").value;
+
+var people = document.getElementById("people").value;
+
+var date = document.getElementById("date").value;
+
+var message = document.getElementById("message").value;
+
+// Add a new document in collection "cities"
+
+db.collection("Reservations").add({
+    name: name,
+    people: people,
+    dateExample: firebase.firestore.Timestamp.fromDate(new Date(date)),
+    message: message
+})
+.then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+});
+
+
+
+}
+</script>
+
+
+
+	<title> Cloud Pizza Store </title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="myScript.js"></script>
+</head>
+<body style="background-color: #FFDAB9;">
+
+	<div class="navBar">
+		<a href="home.html"> Home</a>
+		<a href="menu.html"> Menu</a>
+		<a href="reserve.html"> Reservation</a>
+		<!-- <li style="float:right"><a class = "active" href="about.html"> About</a></li> -->
+
+	</div>
+
+<div class="reserve">
+
+<!-- User filling in reservation info which gets saved on firbase database -->
+<!-- Using the twilio text message, the confirmation message is then SMSed to them -->
+		<!-- <h1>Reservation Form</h1><br> -->
+		<p class="resMsg">Please come into our store and enjoy a pizza with us. Please fill out the information below to reserve a table - Reservation Form</p>
+
+	<label for="name"><b><h3>Name</b></h3></label>
+    <input type="text" placeholder="Name" id="name" name="name" required>
+
+
+    <label for="numberOfPeople"><b><h3>How many people</b></h3></label>
+    <input type="text" id="people" placeholder="How maney people" name="numberOfPeople" required>
+
+  
+    <label for="date"><b><h3>Date</b></h3></label> <br>
+    <input type="datetime-local" id="date" placeholder="Date and time" name="date" value="2021-03-16T20:00" required>
+
+  
+   
+    <label for="message"><b><h3>Special message</b></h3></label>
+    <input type="text" id="message" placeholder="Message\ Special instuctions" name="message" required>
+
+     <button class="submit" onclick="sendInfo()"> Reserve</button>
+
+		
+
+
+	</div>
+</body>
+</html>
